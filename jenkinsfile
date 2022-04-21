@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+ stage('Build') {
+            when {
+              expression {
+                currentBuild.result == null || currenBuild.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'make publish'
+            }
+        }
+    stages {
+        stage('Deploy') {
+            when {
+              expression {
+                currentDeploy.result == null || currentDeploy.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'make publish'
+            }
+        }
+        stage('Test') {
+            when {
+              expression {
+                currentTest.result == null || currenTest.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'make publish'
+            }
+        }
+    }
+}
