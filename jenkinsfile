@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+stages {
  stage('Build') {
             when {
               expression {
@@ -11,7 +11,7 @@ pipeline {
                 sh 'make publish'
             }
         }
-    stages {
+    
         stage('Deploy') {
             when {
               expression {
